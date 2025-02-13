@@ -10,7 +10,8 @@ for adding new employee in the database
 
 for applying leave of a employee
 # POST  2.http://localhost:8080/applyLeave/103
-      body
+      ## body
+      
       {
         "leaveType":"personal leave",
           "startDate":"15-02-2025",
