@@ -5,12 +5,15 @@ Please find the follwing api end point details below
 for adding new employee in the database
 # POST  1.http://localhost:8080/add-employee     
       body
-      |_ "employee_id":109,
+      
+      {
+         "employee_id":109,
          "employee_name":"bhanu"
+      }
 
 for applying leave of a employee
 # POST  2.http://localhost:8080/applyLeave/103
-      **body**
+      body
       
       {
         "leaveType":"personal leave",
@@ -25,9 +28,12 @@ getting pending leaves
 approving leaves
 # POST  4.http://localhost:8080/manager/approve-leave
       body
-      |_ "id":102,
+      
+      {
+         "id":102,
          "status":true,
          "comment":"get proper suggestion from doctor"
+      }
 
 leave details of employee to check their status of leave
 # GET   5.http://localhost:8080/leaves/101
