@@ -1,6 +1,6 @@
 # leaveTrackingSystem
 
-Please find the follwing api end point details below
+Please find the following api end point details below
 
 for adding new employee in the database
 # POST  1.http://localhost:8080/add-employee     
