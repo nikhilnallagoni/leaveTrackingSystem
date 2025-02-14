@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public interface LeaveService {
-    Boolean applyLeave(int id,LeaveModel leave);
+    String applyLeave(int id,LeaveModel leave);
 
     List<Optional<LeaveModel>> getLeaveById(int id);
 

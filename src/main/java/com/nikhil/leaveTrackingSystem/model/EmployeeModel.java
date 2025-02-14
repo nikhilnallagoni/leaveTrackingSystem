@@ -24,7 +24,7 @@ public class EmployeeModel {
     private int availed_leaves=0;
 
 
-    private int remaining_leaves=20;
+    private int remaining_leaves=2;
 
     public int getEmployee_id() {
         return employee_id;

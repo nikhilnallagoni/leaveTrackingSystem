@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface LeaveApprovalService {
     public List<LeaveModel> getPendingLeaves();
 
-    Boolean approveLeaveById(LeaveModel request);
+    String approveLeaveById(LeaveModel request);
 
     public List<?> getOverview(String type);
 

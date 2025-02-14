@@ -24,13 +24,12 @@ public class LeaveController {
 
     @PostMapping("applyLeave/{id}")
     public ResponseEntity<String> applyLeave(@PathVariable  int id, @RequestBody LeaveModel leave){
-        Boolean ok=leaveService.applyLeave(id,leave);
-        if(ok){
-            return new ResponseEntity<>("leaveApplied",HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>("employee not found",HttpStatus.NOT_FOUND);
-        }
+         String response=leaveService.applyLeave(id,leave);
+         if(response.equals("leave applied successfully"))
+            return new ResponseEntity<>(response,HttpStatus.OK);
+         else
+             return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+
     }
 
     @GetMapping("leaves/{id}")

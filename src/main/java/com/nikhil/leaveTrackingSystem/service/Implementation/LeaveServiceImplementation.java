@@ -19,22 +19,24 @@ public class LeaveServiceImplementation implements LeaveService {
 
     @Autowired
     EmployeeRepo employeeRepo;
-    public Boolean applyLeave(int id,LeaveModel leave) {
+    public String applyLeave(int id,LeaveModel leave) {
         System.out.println("saving in repo");
         try{
         Optional<EmployeeModel>employee=employeeRepo.findById(id);
         if(employee.isPresent()){
             EmployeeModel e = employee.get();
+            if(e.getRemaining_leaves()<=0){
+                return "you are out of leaves";
+            }
             leave.setEmployee(e);
             leaveRepo.save(leave);
-            return true;
-
+            return "leave applied successfully";
         }
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            return e.getMessage();
 
         }
-        return false;
+        return " employee details not found";
     }
 
     @Override

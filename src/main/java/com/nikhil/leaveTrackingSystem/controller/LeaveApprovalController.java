@@ -28,12 +28,14 @@ public class LeaveApprovalController {
     }
 
 
+
+
     @PostMapping("approve-leave")
     public ResponseEntity<String> approveLeaveById( @RequestBody LeaveModel request) {
         System.out.println(request.toString());
-        boolean approvalSuccess = leaveApprovalService.approveLeaveById(request);
+        String approvalSuccess = leaveApprovalService.approveLeaveById(request);
 
-        if (approvalSuccess) {
+        if (approvalSuccess.equals("leave approved")) {
             return ResponseEntity.ok("Leave approved successfully.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

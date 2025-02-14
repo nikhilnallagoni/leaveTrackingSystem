@@ -32,7 +32,7 @@ public class LeaveApprovalServiceImplementation implements LeaveApprovalService 
     }
 
     @Override
-    public Boolean approveLeaveById(LeaveModel request) {
+    public String approveLeaveById(LeaveModel request) {
 
         try {
             Optional<LeaveModel> leaveCheck = leaveRepo.findById(request.getId());
@@ -45,9 +45,6 @@ public class LeaveApprovalServiceImplementation implements LeaveApprovalService 
                     EmployeeModel e = employee.get();
                     int availed_leaves = e.getAvailed_leaves();
                     int remaining_leaves = e.getRemaining_leaves();
-                    if (remaining_leaves == 0) {
-                        return false;
-                    }
                     availed_leaves += 1;
                     remaining_leaves -= 1;
                     e.setAvailed_leaves(availed_leaves);
@@ -57,12 +54,12 @@ public class LeaveApprovalServiceImplementation implements LeaveApprovalService 
                 leave.setComment(request.getComment());
                 leave.setStatus(request.getStatus());
                 leaveRepo.save(leave);
-                return true;
+                return "leave approved";
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return false;
+        return "error in approving the leave";
     }
 
     @Override
